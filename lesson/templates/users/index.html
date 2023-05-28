@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+         <tr>
+             <td>
+                 Nickname
+             </td>
+             <td>
+                 email
+             </td>
+         </tr>
+         {% for user in users %}
+         <tr>
+           <td>
+               {{ user.nickname }}
+           </td>
+           <td>
+               {{ user.email }}
+           </td>
+         </tr>
+         {% endfor %}
+    </table>
+    <a href="/users/new.html">Add user</a>
+</body>
+</html>
