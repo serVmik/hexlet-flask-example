@@ -1,12 +1,14 @@
 [tool.poetry]
-name = "lesson"
+name = "hexlet-flask-example"
 version = "0.1.0"
 description = ""
 authors = ["Sergei Mikurov <454004@mail.ru>"]
 readme = "README.md"
+packages = [{include = "hexlet_flask_example"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+gunicorn = "^20.1.0"
 flask = "^2.3.2"
 
 
