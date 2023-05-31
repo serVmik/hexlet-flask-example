@@ -10,6 +10,7 @@ packages = [{include = "hexlet_flask_example"}]
 python = "^3.10"
 gunicorn = "^20.1.0"
 flask = "^2.3.2"
+faker = "^18.9.0"
 
 
 [build-system]
