@@ -1,26 +1,47 @@
 <!doctype html>
 <html>
   <head>
-    <title>Example application</title>
+    <title>Lesson 11</title>
   </head>
   <body>
-    <!-- BEGIN (write your solution here) -->
-      <table>
-        <tr>
-          <th>id</th>
-          <th>first_name</th>
-        </tr>
-        {% for user in users %}
-        <tr>
-          <td>
-            {{ user['id'] }}
-          </td>
-          <td>
-            <a href="/users/{{ user['id'] }}">{{ user['first_name'] }}</a>
-          </td>
-        </tr>
-        {% endfor %}
-      </table>
-    <!-- END -->
+    <form action="/users" method="get">
+<!--      value="{{ search }} - подставляет данные в форму-->
+<!--      name="term" - хранит введенные данные-->
+      <input type="search" name="term" value="{{ search }}" />
+      <input type="submit" value="Search" />
+    </form>
+    <hr>
+    {% for user in users_output %}
+    <ul>
+      <li>{{ user }}</li>
+    </ul>
+    {% endfor %}
   </body>
 </html>
+
+<!--<!doctype html>-->
+<!--<html>-->
+<!--  <head>-->
+<!--    <title>Example application</title>-->
+<!--  </head>-->
+<!--  <body>-->
+<!--    &lt;!&ndash; BEGIN (write your solution here) &ndash;&gt;-->
+<!--      <table>-->
+<!--        <tr>-->
+<!--          <th>id</th>-->
+<!--          <th>first_name</th>-->
+<!--        </tr>-->
+<!--        {% for user in users %}-->
+<!--        <tr>-->
+<!--          <td>-->
+<!--            {{ user['id'] }}-->
+<!--          </td>-->
+<!--          <td>-->
+<!--            <a href="/users/{{ user['id'] }}">{{ user['first_name'] }}</a>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--        {% endfor %}-->
+<!--      </table>-->
+<!--    &lt;!&ndash; END &ndash;&gt;-->
+<!--  </body>-->
+<!--</html>-->
