@@ -4,16 +4,19 @@
     <title>Lesson 11</title>
   </head>
   <body>
-    <form action="/users" method="get">
+    <div>
+      <a href="/">Главная</a>
+    </div>
+    <form action="{{ url_for('users_search') }}" method="get">
 <!--      value="{{ search }} - подставляет данные в форму-->
 <!--      name="term" - хранит введенные данные-->
       <input type="search" name="term" value="{{ search }}" />
       <input type="submit" value="Search" />
     </form>
     <hr>
-    {% for user in users_output %}
+    {% for user in users %}
     <ul>
-      <li>{{ user }}</li>
+      <li>{{ user.name }}</li>
     </ul>
     {% endfor %}
   </body>

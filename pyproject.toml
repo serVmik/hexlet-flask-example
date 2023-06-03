@@ -11,6 +11,7 @@ python = "^3.10"
 gunicorn = "^20.1.0"
 flask = "^2.3.2"
 faker = "^18.9.0"
+flask-sqlalchemy = "^3.0.3"
 
 
 [build-system]

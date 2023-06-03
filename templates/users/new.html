@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Lesson 11</title>
+  </head>
+  <body>
+    <div>
+      <a href="/">Главная</a>
+    </div>
+    <hr>
+    <form action="{{ url_for('user_post') }}" method="post">
+      <div>
+        <label>
+          Nickname:
+          <input type="text" name="name" value="{{ user.name }}">
+        </label>
+          {% if errors['name'] %}
+          <div>{{ errors['name'] }}</div>
+          {% endif %}
+      </div>
+      <div>
+        <label>
+          Email:
+          <input type="text" name="email" value="{{ user.email }}">
+          {% if errors['email'] %}
+          <div>{{ errors['email'] }}</div>
+          {% endif %}
+        </label>
+      </div>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

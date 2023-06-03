@@ -1,9 +1,20 @@
 <!doctype html>
 <html>
   <head>
-    <title>Example application</title>
+    <title>Главная</title>
   </head>
   <body>
-    <a href="/users">Пользователи</a>
+    <div>
+      <a href="{{ url_for('courses_get') }}">Курсы</a>
+    </div>
+    <div>
+      <a href="{{ url_for('course_new') }}">Добавить курс</a>
+    </div>
+    <div>
+      <a href="{{ url_for('users_get') }}">Пользователи</a>
+    </div>
+    <div>
+      <a href="{{ url_for('user_new') }}">Добавить пользователя</a>
+    </div>
   </body>
 </html>
