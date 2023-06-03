@@ -6,7 +6,16 @@
 <body>
     <div>
         <a href="/">Главная</a>
+        <a href="{{ url_for('course_new') }}">Добавить курс</a>
     </div>
+    {% if messages %}
+    <hr>
+      <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
     <hr>
     <table>
         {% for course in courses %}

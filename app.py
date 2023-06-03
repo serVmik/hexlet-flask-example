@@ -1,9 +1,12 @@
 import json
-from flask import Flask, request, render_template, url_for
-import validate
-
+from tools import validate
+from flask import (
+    Flask, request, redirect, render_template, url_for,
+    flash, get_flashed_messages
+)
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'SECRET_KEY'
 
 
 @app.route('/')
@@ -15,7 +18,9 @@ def index():
 def courses_get():
     with open('./data/courses.json', 'r') as data:
         courses = json.load(data)
-    return render_template('courses/index.html', courses=courses,)
+    messages = get_flashed_messages(with_categories=True)
+    return render_template('courses/index.html',
+                           courses=courses, messages=messages,)
 
 
 @app.post('/courses')
@@ -23,7 +28,8 @@ def course_post():
     course = request.form.to_dict()
     errors = validate.validate_course(course)
     if errors:
-        return render_template('courses/new.html', course=course, errors=errors)
+        return render_template('courses/new.html',
+                               course=course, errors=errors,)
 
     with open('./data/courses.json', 'r') as data:
         courses = json.load(data)
@@ -32,22 +38,26 @@ def course_post():
     courses.append(course)
     with open('./data/courses.json', 'w') as data:
         json.dump(courses, data, ensure_ascii=False, indent=2)
+    flash('Course Added', 'success')
 
-    return render_template('courses/index.html', courses=courses, errors=errors)
+    return redirect(url_for('courses_get'))
 
 
 @app.route('/courses/new')
 def course_new():
     course = {'title': '', 'paid': ''}
     errors = {}
-    return render_template('courses/new.html', course=course, errors=errors)
+    return render_template('courses/new.html',
+                           course=course, errors=errors,)
 
 
 @app.get('/users')
 def users_get():
     with open('./data/users.json', 'r') as data:
         users = json.load(data)
-    return render_template('users/index.html', users=users,)
+    massages = get_flashed_messages(with_categories=True)
+    return render_template('users/index.html',
+                           users=users, messages=massages,)
 
 
 @app.post('/users')
@@ -55,7 +65,8 @@ def user_post():
     user = request.form.to_dict()
     errors = validate.validate_user(user)
     if errors:
-        return render_template('users/new.html', user=user, errors=errors)
+        return render_template('users/new.html',
+                               user=user, errors=errors,)
 
     with open('./data/users.json', 'r') as data:
         users = json.load(data)
@@ -63,15 +74,17 @@ def user_post():
     users.append(user)
     with open('./data/users.json', 'w') as data:
         json.dump(users, data, ensure_ascii=False, indent=2)
+    flash('User was added successfully', 'success')
 
-    return render_template('users/index.html', users=users)
+    return redirect(url_for('users_get'))
 
 
 @app.route('/users/new')
 def user_new():
     user = {'name': '', 'email': ''}
     errors = {}
-    return render_template('users/new.html', user=user, errors=errors)
+    return render_template('users/new.html',
+                           user=user, errors=errors,)
 
 
 @app.route('/users/search')
@@ -86,7 +99,7 @@ def users_search():
         users_output = users
 
     return render_template('users/index.html',
-                           users=users_output, search=search)
+                           users=users_output, search=search,)
 
 
 def search_user_by_term(search, users):

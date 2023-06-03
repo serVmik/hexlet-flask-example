@@ -4,12 +4,20 @@
     <title>Lesson 11</title>
   </head>
   <body>
+    Users
     <div>
       <a href="/">Главная</a>
+      <a href="{{ url_for('user_new') }}">Добавить пользователя</a>
     </div>
+      {% if messages %}
+        <hr>
+        <ul class=flashes>
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
     <form action="{{ url_for('users_search') }}" method="get">
-<!--      value="{{ search }} - подставляет данные в форму-->
-<!--      name="term" - хранит введенные данные-->
       <input type="search" name="term" value="{{ search }}" />
       <input type="submit" value="Search" />
     </form>

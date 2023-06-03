@@ -3,5 +3,20 @@
     "title": "Python",
     "paid": "0",
     "id": 1
+  },
+  {
+    "title": "HTML",
+    "paid": "1",
+    "id": 2
+  },
+  {
+    "title": "Функции",
+    "paid": "1",
+    "id": 3
+  },
+  {
+    "title": "Git",
+    "paid": "0",
+    "id": 4
   }
 ]
