@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>post</title>
+  </head>
+  <body>
+    <div>
+      <a href="{{ url_for('get_posts') }}">Posts</a>
+    </div>
+    <div>
+      post name: {{ post.title }}
+    </div>
+    <div>
+      post content: {{ post.body }}
+    </div>
+  </body>
+</html>

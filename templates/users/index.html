@@ -22,11 +22,18 @@
       <input type="submit" value="Search" />
     </form>
     <hr>
-    {% for user in users %}
-    <ul>
-      <li>{{ user.name }}</li>
-    </ul>
-    {% endfor %}
+    <table>
+      {% for user in users %}
+      <tr>
+        <td>
+          {{ user.id }}
+        </td>
+        <td>
+          <a href="{{ url_for('user_get', id=user.id) }}">{{ user.name }}</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
   </body>
 </html>
 

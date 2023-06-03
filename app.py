@@ -1,12 +1,17 @@
 import json
+import math
 from tools import validate
 from flask import (
     Flask, request, redirect, render_template, url_for,
     flash, get_flashed_messages
-)
+    )
+from data.repository import PostsRepository
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'SECRET_KEY'
+
+
+repo = PostsRepository(50)
 
 
 @app.route('/')
@@ -51,7 +56,7 @@ def course_new():
                            course=course, errors=errors,)
 
 
-@app.get('/users')
+@app.route('/users')
 def users_get():
     with open('./data/users.json', 'r') as data:
         users = json.load(data)
@@ -61,7 +66,7 @@ def users_get():
 
 
 @app.post('/users')
-def user_post():
+def users_post():
     user = request.form.to_dict()
     errors = validate.validate_user(user)
     if errors:
@@ -77,6 +82,14 @@ def user_post():
     flash('User was added successfully', 'success')
 
     return redirect(url_for('users_get'))
+
+
+@app.route('/user/<int:id>')
+def user_get(id):
+    with open('./data/users.json', 'r') as data:
+        users = json.load(data)
+    user = next(filter(lambda user_: user_.get('id') == id, users))
+    return render_template('users/show.html', user=user,)
 
 
 @app.route('/users/new')
@@ -116,3 +129,30 @@ def add_id(items):
         if item.get('id', 1) >= id:
             id = item.get('id') + 1
     return id
+
+
+@app.route('/posts')
+def get_posts():
+    with open('./data/posts.json', 'r') as data:
+        posts = json.load(data)
+    limit = 2
+    page = request.args.get('page', default=1, type=int)
+    pages = len(posts) // limit + math.ceil(len(posts) % limit)
+    offset = (page - 1) * limit
+    slice_of_posts = posts[offset:page*limit]
+    return render_template('posts/index.html',
+                           slice_of_posts=slice_of_posts,
+                           page=page, pages=pages,)
+
+
+@app.route('/posts/<id>')
+def get_post(id):
+    with open('./data/posts.json', 'r') as data:
+        posts = json.load(data)
+    filtered_posts = filter(lambda post: post['slug'] == id, posts)
+    post = next(filtered_posts, None)
+
+    if not post:
+        return 'Page not found', 404
+
+    return render_template('posts/show.html', post=post,)

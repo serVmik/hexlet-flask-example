@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Posts</title>
+  </head>
+  <body>
+    <div>
+      {% if page > 1 %}
+        <a href="?page={{ page - 1 }}"><< назад <<</a>
+      {% else %}
+        << назад <<
+      {% endif %}
+      {{ page }}
+      {% if page < pages %}
+        <a href="?page={{ page + 1 }}">>> вперед >></a>
+      {% else %}
+        >> вперед >>
+      {% endif %}
+    </div>
+    <div>
+      {% for post in slice_of_posts %}
+      <ul>
+        <li><a href="{{ url_for('get_post', id=post.slug) }}">{{ post.title }}</a></li>
+      </ul>
+      {% endfor %}
+    </div>
+  </body>
+</html>
