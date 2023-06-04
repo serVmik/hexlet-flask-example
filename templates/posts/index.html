@@ -5,6 +5,26 @@
   </head>
   <body>
     <div>
+      <label>
+        <a href="/">Главная</a>
+      </label>
+      <label>
+        <a href="{{ url_for('posts_new') }}">Добавить пост</a>
+      </label>
+    </div>
+    <div>
+    <hr>
+    <div>
+      {% if messages %}
+        <ul class="flashes">
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      <hr>
+      {% endif %}
+    </div>
+    <div>
       {% if page > 1 %}
         <a href="?page={{ page - 1 }}"><< назад <<</a>
       {% else %}
@@ -20,7 +40,7 @@
     <div>
       {% for post in slice_of_posts %}
       <ul>
-        <li><a href="{{ url_for('get_post', id=post.slug) }}">{{ post.title }}</a></li>
+        <li><a href="{{ url_for('post_get', slug=post.slug) }}">{{ post.title }}</a></li>
       </ul>
       {% endfor %}
     </div>

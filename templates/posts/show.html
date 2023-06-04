@@ -5,8 +5,10 @@
   </head>
   <body>
     <div>
-      <a href="{{ url_for('get_posts') }}">Posts</a>
+        <a href="/">Главная</a>
+        <a href="{{ url_for('course_new') }}">Добавить курс</a>
     </div>
+    <hr>
     <div>
       post name: {{ post.title }}
     </div>

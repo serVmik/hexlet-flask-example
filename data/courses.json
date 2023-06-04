@@ -18,5 +18,10 @@
     "title": "Git",
     "paid": "0",
     "id": 4
+  },
+  {
+    "title": "Python2",
+    "paid": "1",
+    "id": 5
   }
 ]

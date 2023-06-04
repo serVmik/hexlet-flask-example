@@ -12,10 +12,10 @@
       <div>
         <label>
           Title *
-        <input type="text" name="title" value="{{ course.title }}">
+          <input type="text" name="title" value="{{ course.title }}">
         </label>
         {% if errors['title'] %}
-        <div>{{ errors['title'] }}</div>
+          <div>{{ errors['title'] }}</div>
         {% endif %}
     </div>
     <div>
@@ -28,7 +28,7 @@
       </select>
       </label>
       {% if errors['paid'] %}
-        <div>errors['paid']</div>
+        <div>{{ errors['paid'] }}</div>
       {% endif %}
     </div>
     <input type="submit" value="Create">
