@@ -5,6 +5,8 @@ from flask import (Flask, request, redirect, render_template, url_for,
 from tools.validate import validate_user, validate_course, validate_post
 from tools.tools import search_user_by_term, add_id
 
+from tools.calculator import calculate
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'SECRET_KEY'
 
@@ -12,6 +14,22 @@ app.config['SECRET_KEY'] = 'SECRET_KEY'
 @app.route('/')
 def index():
     return render_template('index.html',)
+
+
+@app.get('/calculator')
+def get_calculator():
+    return render_template('calculator.html')
+
+
+@app.post('/calculator')
+def post_calculator():
+    result = calculate()
+    return render_template('calculator.html', result=result)
+
+
+@app.get('/temp')
+def get_temp():
+    return render_template('temp.html')
 
 
 @app.get('/courses')

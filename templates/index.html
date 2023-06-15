@@ -4,20 +4,18 @@
     <title>Главная</title>
   </head>
   <body>
-    <div>
-      <a href="{{ url_for('courses_get') }}">Курсы</a>
-    </div>
-    <div>
-      <a href="{{ url_for('course_new') }}">Добавить курс</a>
-    </div>
-    <div>
-      <a href="{{ url_for('users_get') }}">Пользователи</a>
-    </div>
-    <div>
-      <a href="{{ url_for('user_new') }}">Добавить пользователя</a>
-    </div>
-    <div>
-      <a href="{{ url_for('posts_get') }}">Posts</a>
-    </div>
+    <h1>Верстка</h1>
+    <ul>
+      <li><a href="{{ url_for('get_calculator') }}">Калькулятор</a></li>
+      <li><a href="{{ url_for('get_temp') }}">Temp</a></li>
+    <h1>Flask</h1>
+    </ul>
+    <ul>
+      <li><a href="{{ url_for('courses_get') }}">Курсы</a></li>
+      <li><a href="{{ url_for('course_new') }}">Добавить курс</a></li>
+      <li><a href="{{ url_for('users_get') }}">Пользователи</a></li>
+      <li><a href="{{ url_for('user_new') }}">Добавить пользователя</a></li>
+      <li><a href="{{ url_for('posts_get') }}">Posts</a></li>
+    </ul>
   </body>
 </html>

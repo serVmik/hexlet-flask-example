@@ -1,0 +1,81 @@
+@font-face {
+  font-weight: 400;
+  font-family: "Roboto Mono";
+/*  src: url("../fonts/RobotoMono-Regular.woff2") format("woff2"); */
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+
+  font-family: "Roboto Mono", monospace;
+
+  background: #333131;
+}
+
+p {
+  margin: 5px 0;
+}
+
+/* BEGIN (write your solution here) */
+.calculation {
+  width: 300px;
+  color: #2c3e50;
+}
+
+.screen {
+  display: block;
+  border: 0;
+  background: 0;
+  padding: 30px;
+  color: white;
+  background: #505c68;
+  text-align: right;
+  font-size: 0.8rem;
+}
+
+table {
+  border: 2px solid #bbb;
+}
+
+.button {
+  display: block;
+  border: 0;
+  background: 0;
+  cursor: pointer;
+  font-size: 1.2em;
+
+  color: white;
+}
+
+.button > td {
+  border: 1px solid #bbb;
+  height: 75px;
+  width: 75px;
+}
+
+/* END */
+
+.small {
+  font-size: 80%;
+}
+
+.bg-blue {
+  background: #3498db;
+}
+
+.bg-blue:hover {
+  background: #67b2e4;
+}
+
+.text-big {
+  font-size: 3em;
+}
+
+.text-gray {
+  color: #ced4d9;
+}
