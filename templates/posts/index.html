@@ -1,9 +1,13 @@
 <!DOCTYPE html>
+
 <html>
+
   <head>
     <title>Posts</title>
   </head>
+
   <body>
+
     <div>
       <label>
         <a href="/">Главная</a>
@@ -12,8 +16,10 @@
         <a href="{{ url_for('posts_new') }}">Добавить пост</a>
       </label>
     </div>
+
     <div>
     <hr>
+
     <div>
       {% if messages %}
         <ul class="flashes">
@@ -24,6 +30,7 @@
       <hr>
       {% endif %}
     </div>
+
     <div>
       {% if page > 1 %}
         <a href="?page={{ page - 1 }}"><< назад <<</a>
@@ -37,6 +44,7 @@
         >> вперед >>
       {% endif %}
     </div>
+
     <div>
       {% for post in slice_of_posts %}
       <ul>

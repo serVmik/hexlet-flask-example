@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>New post</title>
-  </head>
-  <body>
-    <div>
-      <a href="/">Главная</a>
-    </div>
-    <hr>
-    <div>
-      <form action="{{ url_for('posts_post') }}" method="post">
-        <div>
-          Title *
-          <input type="text" name="title" value="{{ post.title }}" />
-        </div>
-        {% if errors['title'] %}
-          <div>{{ errors['title'] }}</div>
+</head>
+
+<body>
+  <div>
+    <a href="/">Главная</a>
+  </div>
+  <hr>
+  <div>
+    <form action="{{ url_for('posts_post') }}" method="post">
+
+      <div>
+        Title *
+        <input type="text" name="title" value="{{ post.title }}" />
+      </div>
+      {% if errors['title'] %}
+        <div>{{ errors['title'] }}</div>
+      {% endif %}
+
+      <div>
+        Body *
+        <input type="text" name="body" value="{{ post.body }}" />
+        {% if errors['body'] %}
+          <div>{{ errors['body'] }}</div>
         {% endif %}
-        <div>
-          Body *
-          <input type="text" name="body" value="{{ post.body }}" />
-          {% if errors['body'] %}
-            <div>{{ errors['body'] }}</div>
-          {% endif %}
-        </div>
-        <input type="submit" value="Create">
-      </form>
-    </div>
-  </body>
+      </div>
+
+      <input type="submit" value="Create">
+
+    </form>
+  </div>
+</body>
 </html>
