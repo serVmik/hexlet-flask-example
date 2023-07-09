@@ -2,3 +2,5 @@ examples/
 solutions/
 .idea/
 __pycache__/
+.coverage
+coverage.xml
